@@ -51,3 +51,17 @@ first.step <- function(){
 	return(x)
 }
 
+
+do_all <- function(){
+  x <- rep(-1, 24)
+  Aces <- rep(-8, 4)
+  x <- insert.aces(x, Aces)
+  x <- cut(x)
+  x2 <- deshuffle(x)
+  x3 <- drawflip(x2, 2)
+  x3 <- cut(x3)
+  x4 <- drawflip(x3, 4)
+  x4 <- cut(x4)
+  x5 <- twopile(x4)
+  return(x5)
+}
