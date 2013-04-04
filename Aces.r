@@ -15,15 +15,16 @@ Aces <- deck[14, ]
 Aces <- rbind(Aces, ":3")
 
 deshuffle <- function(x){
-  x[1, (1:ncol(x))%%2 == 0] <- x[2, (1:ncol(x))%%2 == 0]
+  x[, (1:ncol(x))%%2 == 0] <- rev(x[, (1:ncol(x))%%2 == 0])
   cat(x[2, ], "\n")
   return(x)
 }
 
 cut <- function(x){
-  cutter <- sample(2:(length(x)-1), 1)
-  print(cutter)
-  return(c(x[cutter:length(x)], x[1:(cutter-1)]))
+  cutter <- sample(2:(ncol(x)-1), 1)
+  x <- cbind(x[, cutter:ncol(x)], x[, 1:(cutter-1)])
+  cat("Cut at",cutter, ":", x, "\n")
+  return(x)
 }
 
 drawflip <- function(x, divisor){
