@@ -5,6 +5,8 @@ insert.aces <- function(x , Aces){
   x[sample(length(x), length(Aces))] <- -Aces
   return(x)
 }
+cards <- c(1:10, "J", "Q", "K", "A")
+deck <- sapply(c("C", "D", "H", "S"), function(x) paste(cards, x, sep="o"))
 
 deshuffle <- function(x){
   x[(1:length(x))%%2 == 0] <- -x[(1:length(x))%%2 == 0]
