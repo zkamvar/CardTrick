@@ -2,19 +2,21 @@ x <- rep(-1, 24)
 Aces <- rep(-8, 4)
 
 insert.aces <- function(x , Aces){
-  x[sample(length(x), length(Aces))] <- -Aces
+  x[, sample(ncol(x), ncol(Aces))] <- Aces[2:1, ]
+  cat(x[2, ], "\n")
   return(x)
 }
 cards <- c(1:10, "J", "Q", "K", "A")
 deck <- sapply(c("C", "D", "H", "S"), function(x) paste(cards, x, sep="o"))
 
 x <- sample(deck[-14, ], 20)
-x <- rbind(x, ":)")
+x <- rbind(x, ":3")
 Aces <- deck[14, ]
-Aces <- rbind(Aces, ":)")
+Aces <- rbind(Aces, ":3")
 
 deshuffle <- function(x){
-  x[(1:length(x))%%2 == 0] <- -x[(1:length(x))%%2 == 0]
+  x[1, (1:ncol(x))%%2 == 0] <- x[2, (1:ncol(x))%%2 == 0]
+  cat(x[2, ], "\n")
   return(x)
 }
 
