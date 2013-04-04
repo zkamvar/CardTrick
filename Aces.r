@@ -55,9 +55,12 @@ drawflip <- function(x, divisor){
 }
 
 twopile <- function(x){
-  x1 <- x[1:length(x)%%2 == 1]
-  x2 <- x[1:length(x)%%2 == 0]
-  return(c(-x1, x2))
+  x1 <- x[, 1:ncol(x)%%2 == 1]
+  x2 <- x[, 1:ncol(x)%%2 == 0]
+  xf <- as.vector(cbind(x1[1, ], x2[2, ]))
+  xb <- as.vector(cbind(x1[2, ], x2[1, ]))
+  cat("\n===\n", xf, "\n===\n", xb, "\n===\n")
+  return(rbind(xf, xb))
 }
 
 first.step <- function(){
