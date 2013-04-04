@@ -9,7 +9,9 @@ cards <- c(1:10, "J", "Q", "K", "A")
 deck <- sapply(c("C", "D", "H", "S"), function(x) paste(cards, x, sep="o"))
 
 x <- sample(deck[-14, ], 20)
+x <- rbind(x, ":)")
 Aces <- deck[14, ]
+Aces <- rbind(Aces, ":)")
 
 deshuffle <- function(x){
   x[(1:length(x))%%2 == 0] <- -x[(1:length(x))%%2 == 0]
