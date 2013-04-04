@@ -69,9 +69,7 @@ first.step <- function(){
 }
 
 
-do_all <- function(){
-  x <- rep(-1, 24)
-  Aces <- rep(-8, 4)
+do_all <- function(x, Aces, returndeck = TRUE){
   x <- insert.aces(x, Aces)
   x <- cut(x)
   x2 <- deshuffle(x)
@@ -80,5 +78,5 @@ do_all <- function(){
   x4 <- drawflip(x3, 4)
   x4 <- cut(x4)
   x5 <- twopile(x4)
-  return(x5)
+  if (returndeck == TRUE) return(x5)
 }
